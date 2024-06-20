@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký và Đăng Nhập</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: antiquewhite;
+        }
+
+        .container {
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color:aquamarine;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            color: #fff;
+        }
+
+        /* CSS cho biểu mẫu */
+        form {
+            display: none;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 88%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lựa Chọn</h1>
+        <button id="loginButton">Đăng Nhập</button>
+        <button id="registerButton">Đăng Ký</button>
+
+        <!-- Biểu mẫu Đăng Nhập -->
+        <form id="loginForm">
+            <label for="email">Email:</label>
+            <input type="text" id="loginEmail" placeholder="Email">
+
+            <label for="password">Mật khẩu:</label>
+            <input type="password" id="loginPassword" placeholder="Mật khẩu">
+
+            <button type="submit">Đăng Nhập</button>
+        </form>
+
+        <!-- Biểu mẫu Đăng Ký -->
+        <form id="registerForm">
+            <label for="registerEmail">Email:</label>
+            <input type="text" id="registerEmail" placeholder="Email">
+
+            <label for="registerPassword">Mật khẩu:</label>
+            <input type="password" id="registerPassword" placeholder="Mật khẩu">
+
+            <button type="submit">Đăng Ký</button>
+        </form>
+    </div>
+
+    <script>
+        var users = [];
+    
+        // Sự kiện khi nhấn nút Đăng Ký
+        document.getElementById("registerForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            var email = document.getElementById("registerEmail").value;
+            var password = document.getElementById("registerPassword").value;
+    
+            // Kiểm tra xem người dùng đã tồn tại chưa
+            var existingUser = users.find(function (user) {
+                return user.email === email;
+            });
+    
+            if (existingUser) {
+                alert("Email này đã được đăng ký. Vui lòng sử dụng email khác.");
+            } else {
+                users.push({ email: email, password: password });
+                alert("Đăng ký thành công. Bạn có thể đăng nhập bây giờ.");
+                // Xóa dữ liệu trên biểu mẫu Đăng Ký
+                document.getElementById("registerEmail").value = "";
+                document.getElementById("registerPassword").value = "";
+            }
+        });
+    
+        // Sự kiện khi nhấn nút Đăng Nhập
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            var email = document.getElementById("loginEmail").value;
+            var password = document.getElementById("loginPassword").value;
+    
+            var user = users.find(function (user) {
+                return user.email === email && user.password === password;
+            });
+    
+            if (user) {
+                alert("Đăng nhập thành công. Bạn sẽ được chuyển hướng đến trang chủ.");
+                // Chuyển hướng đến trang index.html sau khi đăng nhập thành công
+                window.location.href = "index.html";
+            } else {
+                alert("Đăng nhập không thành công. Vui lòng kiểm tra email và mật khẩu.");
+            }
+        });
+    
+        // Sự kiện khi nhấn nút Đăng Ký hoặc Đăng Nhập
+        document.getElementById("loginButton").addEventListener("click", function () {
+            document.getElementById("loginForm").style.display = "block";
+            document.getElementById("registerForm").style.display = "none";
+        });
+    
+        document.getElementById("registerButton").addEventListener("click", function () {
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("registerForm").style.display = "block";
+        });
+    </script>
+</body>
+</html>

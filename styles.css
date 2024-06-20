@@ -1,0 +1,173 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Header styling */
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Section styling */
+section {
+    background: #fff;
+    margin: 20px;
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+section h2 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+section form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+section form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+section form button {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+section form button:hover {
+    background: #555;
+}
+
+section .error {
+    color: red;
+    margin-bottom: 10px;
+}
+
+section .success {
+    color: green;
+    margin-bottom: 10px;
+}
+
+/* Container for login and register forms */
+.container {
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    text-align: center;
+}
+
+.container h3 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.container form input[type="text"],
+.container form input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.container form button[type="submit"],
+.container form button[type="reset"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    width: calc(100% - 20px);
+}
+
+.container form button[type="submit"] {
+    background-color: #333;
+    color: white;
+}
+
+.container form button[type="reset"] {
+    background-color: #e4e6eb;
+    color: black;
+}
+
+.container form button:hover {
+    opacity: 0.9;
+}
+
+.container a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    margin-top: 10px;
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px 0;
+    background: #333;
+    color: #fff;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+

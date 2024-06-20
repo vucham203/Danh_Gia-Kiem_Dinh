@@ -1,0 +1,95 @@
+/* CSS cho giao diện */
+
+
+
+
+h1 {
+    margin: 0;
+}
+
+section {
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+/* log out */
+.logout-link {
+    display: none;
+    color: black; /* Màu đỏ */
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.login-link {
+    display: none;
+    color: #008CBA; /* Màu xanh dương */
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.logout-link {
+    text-decoration: none;
+    list-style: none;
+    position: relative;
+    top: 14px;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.admin-label:active + .login-link {
+    color: #008CBA; /* Màu xanh dương khi hover */
+}
+
+.admin-label:active + .logout-link {
+    display: none;
+}
+
+.admin-label:hover + .login-link {
+    color: #33CC33; /* Màu xanh lá cây khi hover */
+}
+
+.admin-label:hover + .logout-link {
+    color: red;
+}
