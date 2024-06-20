@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 08, 2023 at 01:56 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th6 20, 2024 lúc 09:16 PM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,156 +18,136 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `vidu`
+-- Cơ sở dữ liệu: `danhgia`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `house`
+-- Cấu trúc bảng cho bảng `payments`
 --
 
-CREATE TABLE `house` (
-  `id` int(5) NOT NULL,
-  `r_number` int(2) NOT NULL,
-  `d_contract` varchar(20) NOT NULL,
-  `deposits` int(11) NOT NULL
+CREATE TABLE `payments` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `amount` decimal(10,2) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `house`
+-- Đang đổ dữ liệu cho bảng `payments`
 --
 
-INSERT INTO `house` (`id`, `r_number`, `d_contract`, `deposits`) VALUES
-(6, 22, '12/03/2023', 758798),
-(7, 55, '12/03/2024', 23443182),
-(8, 443, '12/03/2024', 2344434),
-(10, 88, '12/03/2024', 23443434);
+INSERT INTO `payments` (`id`, `user_id`, `amount`, `date`) VALUES
+(15, 12, 225000.00, '2024-06-13 22:59:17'),
+(16, 13, 125000.00, '2024-06-14 01:44:24'),
+(17, 13, 10000.00, '2024-06-14 02:44:09'),
+(18, 13, 50000.00, '2024-06-16 03:22:12'),
+(19, 13, 25000.00, '2024-06-17 15:01:16'),
+(20, 13, 25000.00, '2024-06-19 09:00:46'),
+(21, 12, 80000.00, '2024-06-20 18:35:47');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `house_type`
---
-
-CREATE TABLE `house_type` (
-  `id` int(4) NOT NULL,
-  `r_number` int(20) NOT NULL,
-  `r_condition` varchar(50) NOT NULL,
-  `price` int(20) NOT NULL,
-  `convenient` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `house_type`
---
-
-INSERT INTO `house_type` (`id`, `r_number`, `r_condition`, `price`, `convenient`) VALUES
-(1, 44, 'trống', 242434432, 'có giường đôi'),
-(4, 88, 'đã thuê', 234434243, 'có giường đôi');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tenants`
---
-
-CREATE TABLE `tenants` (
-  `id` int(4) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `phone` int(50) NOT NULL,
-  `r_number` int(20) NOT NULL,
-  `r_amount` int(50) NOT NULL,
-  `co_date` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tenants`
---
-
-INSERT INTO `tenants` (`id`, `name`, `phone`, `r_number`, `r_amount`, `co_date`) VALUES
-(1, 'Hoa Tran', 123456789, 36, 234423, '12/12/2033'),
-(4, 'Trần Gia Hoà', 363633706, 15, 5435454, '12/01/2024'),
-(5, 'Trần Gia Hoà', 363633706, 22, 2132344, '2/12/2023');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
+-- Cấu trúc bảng cho bảng `user`
 --
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
+  `username` text NOT NULL,
   `password` varchar(255) NOT NULL,
-  `level` int(11) NOT NULL
+  `level` int(11) NOT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `user`
+-- Đang đổ dữ liệu cho bảng `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `level`) VALUES
-(1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 0),
-(5, 'hoadeptrai', 'e10adc3949ba59abbe56e057f20f883e', 0),
-(6, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 0),
-(7, 'hoadeptrai', '250cf8b51c773f3f8dc8b4be867a9a02', 0);
+INSERT INTO `user` (`id`, `username`, `password`, `level`, `admin`) VALUES
+(12, 'hoavong768@gmail.com', '$2y$10$qi5ZQ9c.XfmkVkhcPenUJeHWxV0WkX/rid4XIjDFDPqKkiunZayBC', 0, 0),
+(13, 'pimpompimpom4@gmail.com', '$2y$10$D3pSMCF4b5NXwaH1ltEd3.AKUilQHUBEHLKh7huh2NlsOu.iiTG4O', 0, 0),
+(16, 'nguyenvu00304@gmail.com', '$2y$10$nuPqETAf12u8OY1gw8BwReRsxKH8.f.V/QMjD/w2JL18cZ3eWbrI.', 1, 1);
+
+-- --------------------------------------------------------
 
 --
--- Indexes for dumped tables
+-- Cấu trúc bảng cho bảng `water_usage`
+--
+
+CREATE TABLE `water_usage` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `usewater` decimal(10,2) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `water_usage`
+--
+
+INSERT INTO `water_usage` (`id`, `user_id`, `usewater`, `date`) VALUES
+(12, 16, 3.00, '2024-06-13 21:07:13'),
+(13, 16, 7.00, '2024-06-13 21:20:41'),
+(14, 16, 1.00, '2024-06-13 21:29:35'),
+(15, 16, 5.00, '2024-06-13 21:30:12');
+
+--
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `house`
+-- Chỉ mục cho bảng `payments`
 --
-ALTER TABLE `house`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `house_type`
---
-ALTER TABLE `house_type`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tenants`
---
-ALTER TABLE `tenants`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user`
+-- Chỉ mục cho bảng `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Chỉ mục cho bảng `water_usage`
+--
+ALTER TABLE `water_usage`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `house`
+-- AUTO_INCREMENT cho bảng `payments`
 --
-ALTER TABLE `house`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+ALTER TABLE `payments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT for table `house_type`
---
-ALTER TABLE `house_type`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `tenants`
---
-ALTER TABLE `tenants`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT cho bảng `water_usage`
+--
+ALTER TABLE `water_usage`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- Các ràng buộc cho các bảng đã đổ
+--
+
+--
+-- Các ràng buộc cho bảng `payments`
+--
+ALTER TABLE `payments`
+  ADD CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
